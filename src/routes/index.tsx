@@ -1,6 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { ArrowUpRight, Minus, Plus } from "lucide-react";
+import {
+  ArrowUpRight,
+  CalendarDays,
+  Clock3,
+  Crown,
+  Drumstick,
+  Flame,
+  GraduationCap,
+  MapPin,
+  Minus,
+  Plus,
+  Sprout,
+  Utensils,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import posterAsset from "@/assets/arambha-2k26-poster.webp.asset.json";
 
@@ -18,7 +31,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-export function Index() {
+function Index() {
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
   const [roll, setRoll] = useState("");
@@ -44,9 +57,9 @@ export function Index() {
               SAVE<br />THE DATE.
             </h1>
             <div className="mb-7 space-y-3 text-base">
-              <p>📅&nbsp; 14 OCTOBER 2024</p>
-              <p>⏰&nbsp; 9:00 AM ONWARDS</p>
-              <p>📍&nbsp; ED HALL</p>
+              <p className="flex items-center gap-2"><CalendarDays aria-hidden="true" className="size-4 text-primary" />14 OCTOBER 2024</p>
+              <p className="flex items-center gap-2"><Clock3 aria-hidden="true" className="size-4 text-primary" />9:00 AM ONWARDS</p>
+              <p className="flex items-center gap-2"><MapPin aria-hidden="true" className="size-4 text-primary" />ED HALL</p>
             </div>
             <Button variant="invite" className="h-11 w-full text-xs" onClick={() => setStep(1)}>
               TELL ME WHAT TO DO →
@@ -56,7 +69,7 @@ export function Index() {
 
         {step === 1 && (
           <form onSubmit={advance} className="space-y-4">
-            <h1 className="text-2xl font-bold leading-tight">What’s your good name, Junior? 👑</h1>
+            <h1 className="flex items-start gap-2 text-2xl font-bold leading-tight">What’s your good name, Junior? <Crown aria-hidden="true" className="mt-1 size-5 shrink-0 text-celebration" /></h1>
             <label className="sr-only" htmlFor="junior-name">Your name</label>
             <input
               id="junior-name"
@@ -72,7 +85,7 @@ export function Index() {
 
         {step === 2 && (
           <form onSubmit={advance} className="space-y-4">
-            <h1 className="text-2xl font-bold leading-tight">Show Your ID 🎓</h1>
+            <h1 className="flex items-center gap-2 text-2xl font-bold leading-tight">Show Your ID <GraduationCap aria-hidden="true" className="size-6 shrink-0 text-primary" /></h1>
             <label className="sr-only" htmlFor="junior-roll">Your roll number</label>
             <input
               id="junior-roll"
@@ -87,10 +100,10 @@ export function Index() {
 
         {step === 3 && (
           <div>
-            <h1 className="mb-6 text-2xl font-bold leading-tight">One serious question 🍛<br />Veg or Non-Veg?</h1>
+            <h1 className="mb-6 text-2xl font-bold leading-tight">One serious question <Utensils aria-hidden="true" className="inline size-5 text-celebration" /><br />Veg or Non-Veg?</h1>
             <div className="space-y-3">
-              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => setStep(4)}>VEG 🥗</Button>
-              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => setStep(4)}>NON-VEG 🍗</Button>
+              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => setStep(4)}>VEG <Sprout aria-hidden="true" className="size-4" /></Button>
+              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => setStep(4)}>NON-VEG <Drumstick aria-hidden="true" className="size-4" /></Button>
             </div>
           </div>
         )}
@@ -98,7 +111,7 @@ export function Index() {
         {step === 4 && (
           <div className="py-1 text-center">
             <h1 className="mb-5 text-[32px] font-bold leading-[1.15] text-celebration">
-              YOU’RE IN! 🔥<br />Welcome to ARAMBHA 2K26
+              YOU’RE IN! <Flame aria-hidden="true" className="inline size-7" /><br />Welcome to ARAMBHA 2K26
             </h1>
             <p className="mb-7 text-sm text-muted-foreground">Now get ready for what’s next!</p>
             <Button variant="celebration" className="h-11 w-full text-xs" onClick={() => setStep(5)}>
