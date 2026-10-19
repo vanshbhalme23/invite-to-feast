@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function Index() {
+export function Index() {
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
   const [roll, setRoll] = useState("");
