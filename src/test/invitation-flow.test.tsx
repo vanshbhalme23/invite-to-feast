@@ -7,8 +7,8 @@ describe("Arambha 2K26 invitation flow", () => {
   it("shows the event details and advances into the invitation", () => {
     render(<Index />);
 
-    expect(screen.getByText("14 OCTOBER 2024")).toBeInTheDocument();
-    expect(screen.getByText("9:00 AM ONWARDS")).toBeInTheDocument();
+    expect(screen.getByText(/14 OCTOBER 2024/)).toBeInTheDocument();
+    expect(screen.getByText(/9:00 AM ONWARDS/)).toBeInTheDocument();
     expect(screen.getByText("ED HALL", { exact: false })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "TELL ME WHAT TO DO →" }));

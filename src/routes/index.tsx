@@ -22,7 +22,6 @@ export function Index() {
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
   const [roll, setRoll] = useState("");
-  const [food, setFood] = useState<"Veg" | "Non-Veg" | null>(null);
   const [zoom, setZoom] = useState(1);
 
   function advance(event: FormEvent<HTMLFormElement>) {
@@ -90,8 +89,8 @@ export function Index() {
           <div>
             <h1 className="mb-6 text-2xl font-bold leading-tight">One serious question 🍛<br />Veg or Non-Veg?</h1>
             <div className="space-y-3">
-              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => { setFood("Veg"); setStep(4); }}>VEG 🥗</Button>
-              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => { setFood("Non-Veg"); setStep(4); }}>NON-VEG 🍗</Button>
+              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => setStep(4)}>VEG 🥗</Button>
+              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => setStep(4)}>NON-VEG 🍗</Button>
             </div>
           </div>
         )}
