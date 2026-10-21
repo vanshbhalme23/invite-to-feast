@@ -6,6 +6,7 @@ import {
   Clock3,
   Crown,
   Drumstick,
+  FileSpreadsheet,
   Flame,
   GraduationCap,
   MapPin,
@@ -14,6 +15,7 @@ import {
   Sprout,
   Utensils,
 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import posterAsset from "@/assets/fresh-aura-2k26-poster.jpg.asset.json";
 
@@ -40,6 +42,39 @@ function Index() {
   function advance(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStep((current) => Math.min(current + 1, 4));
+  }
+
+  function saveResponse(choice: "veg" | "non-veg") {
+    void supabase
+      .from("invite_responses")
+      .insert({
+        name: name.trim().slice(0, 100),
+        roll_no: roll.trim().slice(0, 50),
+        food_choice: choice,
+      })
+      .then(({ error }) => {
+        if (error) console.error("Failed to save entry", error);
+      });
+    setStep(4);
+  }
+
+  async function downloadEntries() {
+    const code = window.prompt("Organizer code:");
+    if (!code) return;
+    const response = await fetch(`/api/public/invite-entries?code=${encodeURIComponent(code)}`);
+    if (!response.ok) {
+      alert(response.status === 401 ? "Wrong organizer code." : "Download failed. Try again.");
+      return;
+    }
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "fresh-aura-2k26-entries.xlsx";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30_000);
   }
 
   return (
@@ -102,8 +137,8 @@ function Index() {
           <div>
             <h1 className="mb-6 text-2xl font-bold leading-tight">One serious question <Utensils aria-hidden="true" className="inline size-5 text-celebration" /><br />Veg or Non-Veg?</h1>
             <div className="space-y-3">
-              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => setStep(4)}>VEG <Sprout aria-hidden="true" className="size-4" /></Button>
-              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => setStep(4)}>NON-VEG <Drumstick aria-hidden="true" className="size-4" /></Button>
+              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => saveResponse("veg")}>VEG <Sprout aria-hidden="true" className="size-4" /></Button>
+              <Button variant="invite" className="h-11 w-full text-xs" onClick={() => saveResponse("non-veg")}>NON-VEG <Drumstick aria-hidden="true" className="size-4" /></Button>
             </div>
           </div>
         )}
@@ -149,6 +184,9 @@ function Index() {
                 </Button>
               </div>
             </div>
+            <Button variant="ghost" className="mt-4 h-10 w-full text-xs" onClick={downloadEntries}>
+              ORGANIZER · DOWNLOAD ENTRIES (EXCEL) <FileSpreadsheet aria-hidden="true" className="size-4" />
+            </Button>
           </div>
         )}
       </section>

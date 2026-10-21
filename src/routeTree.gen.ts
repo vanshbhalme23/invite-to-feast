@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicInviteEntriesRouteImport } from './routes/api/public/invite-entries'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicInviteEntriesRoute = ApiPublicInviteEntriesRouteImport.update({
+  id: '/api/public/invite-entries',
+  path: '/api/public/invite-entries',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/public/invite-entries': typeof ApiPublicInviteEntriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/public/invite-entries': typeof ApiPublicInviteEntriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/public/invite-entries': typeof ApiPublicInviteEntriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/api/public/invite-entries'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/api/public/invite-entries'
+  id: '__root__' | '/' | '/api/public/invite-entries'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiPublicInviteEntriesRoute: typeof ApiPublicInviteEntriesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/invite-entries': {
+      id: '/api/public/invite-entries'
+      path: '/api/public/invite-entries'
+      fullPath: '/api/public/invite-entries'
+      preLoaderRoute: typeof ApiPublicInviteEntriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiPublicInviteEntriesRoute: ApiPublicInviteEntriesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
