@@ -13,9 +13,9 @@ describe("Arambha 2K26 invitation flow", () => {
   it("shows the event details and advances into the invitation", () => {
     render(<InvitationPage />);
 
-    expect(screen.getByText(/14 OCTOBER 2024/)).toBeInTheDocument();
-    expect(screen.getByText(/9:00 AM ONWARDS/)).toBeInTheDocument();
-    expect(screen.getByText("ED HALL", { exact: false })).toBeInTheDocument();
+    expect(screen.getByText(/23 OCTOBER 2026/)).toBeInTheDocument();
+    expect(screen.getByText(/10:30 AM ONWARDS/)).toBeInTheDocument();
+    expect(screen.getByText(/SHIVSHANKAR SABHAGRUA/, { exact: false })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "TELL ME WHAT TO DO →" }));
     expect(screen.getByLabelText("Your name")).toBeInTheDocument();
@@ -32,9 +32,9 @@ describe("Arambha 2K26 invitation flow", () => {
     fireEvent.click(screen.getByRole("button", { name: "I AM A JUNIOR →" }));
     fireEvent.click(screen.getByRole("button", { name: "VEG" }));
 
-    expect(screen.getByText(/Welcome to ARAMBHA 2K26/)).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "SHOW ME THE POSTER 🔥" }));
-    expect(screen.getByRole("img", { name: "Arambha 2K26 Freshers Party invitation poster" })).toBeInTheDocument();
-    expect(screen.getByText("14th OCT • 9 AM • ED HALL")).toBeInTheDocument();
+    expect(screen.getByText(/Welcome to FRESH AURA 2K26/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "SHOW ME THE POSTER" }));
+    expect(screen.getByRole("img", { name: "FRESH AURA 2K26 Fresher's Party invitation poster" })).toBeInTheDocument();
+    expect(screen.getByText("23rd OCT • 10:30 AM • SHIVSHANKAR SABHAGRUA")).toBeInTheDocument();
   });
 });

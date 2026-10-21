@@ -20,10 +20,10 @@ import posterAsset from "@/assets/fresh-aura-2k26-poster.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Arambha 2K26 · Freshers Party Invitation" },
-      { name: "description", content: "Save the date and join the Arambha 2K26 Freshers Party at ED Hall." },
-      { property: "og:title", content: "Arambha 2K26 · Freshers Party Invitation" },
-      { property: "og:description", content: "Save the date and join the Arambha 2K26 Freshers Party at ED Hall." },
+      { title: "FRESH AURA 2K26 · Fresher's Party Invitation" },
+      { name: "description", content: "Save the date and join the FRESH AURA 2K26 Fresher's Party at Shivshankar Sabhagruha." },
+      { property: "og:title", content: "FRESH AURA 2K26 · Fresher's Party Invitation" },
+      { property: "og:description", content: "Save the date and join the FRESH AURA 2K26 Fresher's Party at Shivshankar Sabhagruha." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -57,9 +57,9 @@ function Index() {
               SAVE<br />THE DATE.
             </h1>
             <div className="mb-7 space-y-3 text-base">
-              <p className="flex items-center gap-2"><CalendarDays aria-hidden="true" className="size-4 text-primary" />14 OCTOBER 2024</p>
-              <p className="flex items-center gap-2"><Clock3 aria-hidden="true" className="size-4 text-primary" />9:00 AM ONWARDS</p>
-              <p className="flex items-center gap-2"><MapPin aria-hidden="true" className="size-4 text-primary" />ED HALL</p>
+              <p className="flex items-center gap-2"><CalendarDays aria-hidden="true" className="size-4 text-primary" />23 OCTOBER 2026</p>
+              <p className="flex items-center gap-2"><Clock3 aria-hidden="true" className="size-4 text-primary" />10:30 AM ONWARDS</p>
+              <p className="flex items-center gap-2"><MapPin aria-hidden="true" className="size-4 text-primary" />SHIVSHANKAR SABHAGRUA</p>
             </div>
             <Button variant="invite" className="h-11 w-full text-xs" onClick={() => setStep(1)}>
               TELL ME WHAT TO DO →
@@ -111,7 +111,7 @@ function Index() {
         {step === 4 && (
           <div className="py-1 text-center">
             <h1 className="mb-5 text-[32px] font-bold leading-[1.15] text-celebration">
-              YOU’RE IN! <Flame aria-hidden="true" className="inline size-7" /><br />Welcome to ARAMBHA 2K26
+              YOU’RE IN! <Flame aria-hidden="true" className="inline size-7" /><br />Welcome to FRESH AURA 2K26
             </h1>
             <p className="mb-7 text-sm text-muted-foreground">Now get ready for what’s next!</p>
             <Button variant="celebration" className="h-11 w-full text-xs" onClick={() => setStep(5)}>
