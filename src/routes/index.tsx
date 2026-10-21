@@ -15,7 +15,7 @@ import {
   Utensils,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import posterAsset from "@/assets/arambha-2k26-poster.webp.asset.json";
+import posterAsset from "@/assets/fresh-aura-2k26-poster.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -115,28 +115,28 @@ function Index() {
             </h1>
             <p className="mb-7 text-sm text-muted-foreground">Now get ready for what’s next!</p>
             <Button variant="celebration" className="h-11 w-full text-xs" onClick={() => setStep(5)}>
-              SHOW ME THE POSTER 🔥
+              SHOW ME THE POSTER <Flame aria-hidden="true" className="size-4" />
             </Button>
           </div>
         )}
 
         {step === 5 && (
           <div className="text-center">
-            <h1 className="text-2xl font-bold leading-tight">ARAMBHA 2K26<br />FRESHERS PARTY</h1>
-            <p className="mt-4 text-base">14th OCT • 9 AM • ED HALL</p>
+            <h1 className="text-2xl font-bold leading-tight">FRESH AURA 2K26<br />FRESHER’S PARTY</h1>
+            <p className="mt-4 text-base">23rd OCT • 10:30 AM • SHIVSHANKAR SABHAGRUA</p>
             <div className="relative mt-4 flex h-[450px] items-center justify-center overflow-hidden rounded-2xl bg-muted">
               <a
                 href={posterAsset.url}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Open the Arambha 2K26 poster in a new tab"
+                aria-label="Open the FRESH AURA 2K26 poster in a new tab"
                 className="absolute right-3 top-3 z-10 inline-flex size-9 items-center justify-center rounded-sm bg-background/85 text-foreground"
               >
                 <ArrowUpRight aria-hidden="true" className="size-5" />
               </a>
               <img
                 src={posterAsset.url}
-                alt="Arambha 2K26 Freshers Party invitation poster"
+                alt="FRESH AURA 2K26 Fresher's Party invitation poster"
                 className="h-full max-w-full object-contain transition-transform duration-200"
                 style={{ transform: `scale(${zoom})` }}
               />
