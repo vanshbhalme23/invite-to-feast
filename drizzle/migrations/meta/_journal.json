@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792576780288,
+      "tag": "0000_create_invite_responses",
+      "breakpoints": true
+    }
+  ]
 }
